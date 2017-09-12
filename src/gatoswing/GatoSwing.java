@@ -21,6 +21,7 @@ public class GatoSwing extends JFrame implements ActionListener {
     JButton boton9;
     JButton nuevoJuego;
     String signoActual = "X";
+    int buttonsDisable = 0;
 
     public GatoSwing() {
         setLayout(null);
@@ -72,113 +73,98 @@ public class GatoSwing extends JFrame implements ActionListener {
         nuevoJuego.setEnabled(false);
 
     }
-
-    public void Ganador() {
-        int cont=0;
-        if (boton1.getText().equals(boton5.getText()) && boton1.getText().equals(boton9.getText()) && !boton1.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Felicitaciones, ¡Haz ganado!");
-            boton2.setEnabled(false);
-            boton3.setEnabled(false);
-            boton4.setEnabled(false);
-            boton6.setEnabled(false);
-            boton7.setEnabled(false);
-            boton8.setEnabled(false);
-            nuevoJuego.setEnabled(true);
-            cont=1;
-        }
-        if (boton3.getText().equals(boton5.getText()) && boton3.getText().equals(boton7.getText()) && !boton3.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Felicitaciones, ¡Haz ganado!");
-            boton1.setEnabled(false);
-            boton2.setEnabled(false);
-            boton4.setEnabled(false);
-            boton6.setEnabled(false);
-            boton8.setEnabled(false);
-            boton9.setEnabled(false);
-            nuevoJuego.setEnabled(true);
-            cont=1;
-        }
-        if (boton1.getText().equals(boton2.getText()) && boton1.getText().equals(boton3.getText()) && !boton1.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Felicitaciones, ¡Haz ganado!");
-            boton4.setEnabled(false);
-            boton5.setEnabled(false);
-            boton6.setEnabled(false);
-            boton7.setEnabled(false);
-            boton8.setEnabled(false);
-            boton9.setEnabled(false);
-            nuevoJuego.setEnabled(true);
-            cont=1;
-        }
-        if (boton4.getText().equals(boton5.getText()) && boton4.getText().equals(boton6.getText()) && !boton4.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Felicitaciones, ¡Haz ganado!");
-            boton1.setEnabled(false);
-            boton2.setEnabled(false);
-            boton3.setEnabled(false);
-            boton7.setEnabled(false);
-            boton8.setEnabled(false);
-            boton9.setEnabled(false);
-            nuevoJuego.setEnabled(true);
-            cont=1;
-        }
-        if (boton7.getText().equals(boton8.getText()) && boton7.getText().equals(boton9.getText()) && !boton7.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Felicitaciones, ¡Haz ganado!");
-            boton1.setEnabled(false);
-            boton2.setEnabled(false);
-            boton3.setEnabled(false);
-            boton4.setEnabled(false);
-            boton5.setEnabled(false);
-            boton6.setEnabled(false);
-            nuevoJuego.setEnabled(true);
-            cont=1;
-        }
-        if (boton1.getText().equals(boton4.getText()) && boton1.getText().equals(boton7.getText()) && !boton1.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Felicitaciones, ¡Haz ganado!");
-            boton2.setEnabled(false);
-            boton3.setEnabled(false);
-            boton5.setEnabled(false);
-            boton6.setEnabled(false);
-            boton8.setEnabled(false);
-            boton9.setEnabled(false);
-            nuevoJuego.setEnabled(true);
-            cont=1;
-        }
-        if (boton2.getText().equals(boton5.getText()) && boton2.getText().equals(boton8.getText()) && !boton2.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Felicitaciones, ¡Haz ganado!");
-            boton1.setEnabled(false);
-            boton3.setEnabled(false);
-            boton4.setEnabled(false);
-            boton6.setEnabled(false);
-            boton7.setEnabled(false);
-            boton9.setEnabled(false);
-            nuevoJuego.setEnabled(true);
-            cont=1;
-        }
-        if (boton3.getText().equals(boton6.getText()) && boton3.getText().equals(boton9.getText()) && !boton3.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Felicitaciones, ¡Haz ganado!");
-            boton1.setEnabled(false);
-            boton2.setEnabled(false);
-            boton4.setEnabled(false);
-            boton5.setEnabled(false);
-            boton7.setEnabled(false);
-            boton8.setEnabled(false);
-            nuevoJuego.setEnabled(true);
-            cont=1;
-        } else {
-            if (!boton1.isEnabled() && !boton2.isEnabled() && !boton3.isEnabled() && !boton4.isEnabled() && !boton5.isEnabled() && !boton6.isEnabled() && !boton7.isEnabled() && !boton8.isEnabled() && !boton9.isEnabled()&&cont!=1) {
+    public void disableButtons(){
+        boton1.setEnabled(false);
+        boton2.setEnabled(false);
+        boton3.setEnabled(false);
+        boton4.setEnabled(false);
+        boton5.setEnabled(false);
+        boton6.setEnabled(false);
+        boton7.setEnabled(false);
+        boton8.setEnabled(false);
+        boton9.setEnabled(false);
+        nuevoJuego.setEnabled(true);
+    }
+    public void ganador() {
+        String felicitaciones = "Felicitaciones, ¡Haz ganado!";
+        boolean conv1 = boton1.getText().equals(boton5.getText()) && boton1.getText().equals(boton9.getText()) && !boton1.getText().equals("");
+        boolean conv2 = boton3.getText().equals(boton5.getText()) && boton3.getText().equals(boton7.getText()) && !boton3.getText().equals("");
+        boolean conv3 = boton1.getText().equals(boton2.getText()) && boton1.getText().equals(boton3.getText()) && !boton1.getText().equals("");        
+        boolean conv4 = boton4.getText().equals(boton5.getText()) && boton4.getText().equals(boton6.getText()) && !boton4.getText().equals("");
+        boolean conv5 = boton7.getText().equals(boton8.getText()) && boton7.getText().equals(boton9.getText()) && !boton7.getText().equals("");
+        boolean conv6 = boton1.getText().equals(boton4.getText()) && boton1.getText().equals(boton7.getText()) && !boton1.getText().equals("");
+        boolean conv7 = boton2.getText().equals(boton5.getText()) && boton2.getText().equals(boton8.getText()) && !boton2.getText().equals("");
+        boolean conv8 = boton3.getText().equals(boton6.getText()) && boton3.getText().equals(boton9.getText()) && !boton3.getText().equals(""); 
+        boolean arrayConv[] = {conv1,conv2,conv3,conv4,conv5,conv6,conv7,conv8};
+        
+        for(int i=0; i<arrayConv.length;i++){
+            if (arrayConv[i]) {
+                JOptionPane.showMessageDialog(null, felicitaciones);
+                disableButtons();
+                break;
+            }else if (buttonsDisable == 9) {
                 JOptionPane.showMessageDialog(null, "Ha sido un Empate");
                 nuevoJuego.setEnabled(true);
+                break;
             }
         }
+        /*
+        if (boton1.getText().equals(boton5.getText()) && boton1.getText().equals(boton9.getText()) && !boton1.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, felicitaciones);
+            disableButtons();
+        }else if (boton3.getText().equals(boton5.getText()) && boton3.getText().equals(boton7.getText()) && !boton3.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, felicitaciones);
+            disableButtons();
+        }else if (boton1.getText().equals(boton2.getText()) && boton1.getText().equals(boton3.getText()) && !boton1.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, felicitaciones);
+            disableButtons();
+        }else if (boton4.getText().equals(boton5.getText()) && boton4.getText().equals(boton6.getText()) && !boton4.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, felicitaciones);
+            disableButtons();
+        }else if (boton7.getText().equals(boton8.getText()) && boton7.getText().equals(boton9.getText()) && !boton7.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, felicitaciones);
+            disableButtons();
+        }else if (boton1.getText().equals(boton4.getText()) && boton1.getText().equals(boton7.getText()) && !boton1.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, felicitaciones);
+            disableButtons();
+        }else if (boton2.getText().equals(boton5.getText()) && boton2.getText().equals(boton8.getText()) && !boton2.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, felicitaciones);
+            disableButtons();
+        }else if (boton3.getText().equals(boton6.getText()) && boton3.getText().equals(boton9.getText()) && !boton3.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, felicitaciones);
+            disableButtons();
+        } else if (buttonsDisable == 9) {
+                JOptionPane.showMessageDialog(null, "Ha sido un Empate");
+                nuevoJuego.setEnabled(true);
+        }
+        */
     }
 
     public static void main(String[] args) {
-        GatoSwing GS = new GatoSwing();
-        GS.setVisible(true);
-        GS.setBounds(20, 20, 316, 368);
+        GatoSwing gs = new GatoSwing();
+        gs.setVisible(true);
+        gs.setBounds(20, 20, 316, 368);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //throw new UnsupportedOperationException("Not supported yet.");
+        JButton arrayButtons[] = {boton1, boton2, boton3, boton4, boton5, boton6, boton7, boton8, boton9};
+        
+        for(int i=0; i<arrayButtons.length;i++){
+            if (e.getSource() == arrayButtons[i]) {
+                if (signoActual.equals("X")) {
+                    arrayButtons[i].setText(signoActual);
+                    signoActual = "O";
+                } else {
+                    arrayButtons[i].setText(signoActual);
+                    signoActual = "X";
+                }
+                arrayButtons[i].setEnabled(false);
+                buttonsDisable += 1;
+                ganador();
+            }
+        }
+        /*
         if (e.getSource() == boton1) {
             if (signoActual.equals("X")) {
                 boton1.setText(signoActual);
@@ -188,7 +174,8 @@ public class GatoSwing extends JFrame implements ActionListener {
                 signoActual = "X";
             }
             boton1.setEnabled(false);
-            Ganador();
+            buttonsDisable += 1;
+            ganador();
         }
         if (e.getSource() == boton2) {
             if (signoActual.equals("X")) {
@@ -199,7 +186,8 @@ public class GatoSwing extends JFrame implements ActionListener {
                 signoActual = "X";
             }
             boton2.setEnabled(false);
-            Ganador();
+            buttonsDisable += 1;
+            ganador();
         }
         if (e.getSource() == boton3) {
             if (signoActual.equals("X")) {
@@ -210,7 +198,8 @@ public class GatoSwing extends JFrame implements ActionListener {
                 signoActual = "X";
             }
             boton3.setEnabled(false);
-            Ganador();
+            buttonsDisable += 1;
+            ganador();
         }
         if (e.getSource() == boton4) {
             if (signoActual.equals("X")) {
@@ -221,7 +210,8 @@ public class GatoSwing extends JFrame implements ActionListener {
                 signoActual = "X";
             }
             boton4.setEnabled(false);
-            Ganador();
+            buttonsDisable += 1;
+            ganador();
         }
         if (e.getSource() == boton5) {
             if (signoActual.equals("X")) {
@@ -232,7 +222,8 @@ public class GatoSwing extends JFrame implements ActionListener {
                 signoActual = "X";
             }
             boton5.setEnabled(false);
-            Ganador();
+            buttonsDisable += 1;
+            ganador();
         }
         if (e.getSource() == boton6) {
             if (signoActual.equals("X")) {
@@ -243,7 +234,8 @@ public class GatoSwing extends JFrame implements ActionListener {
                 signoActual = "X";
             }
             boton6.setEnabled(false);
-            Ganador();
+            buttonsDisable += 1;
+            ganador();
         }
         if (e.getSource() == boton7) {
             if (signoActual.equals("X")) {
@@ -254,7 +246,8 @@ public class GatoSwing extends JFrame implements ActionListener {
                 signoActual = "X";
             }
             boton7.setEnabled(false);
-            Ganador();
+            buttonsDisable += 1;
+            ganador();
         }
         if (e.getSource() == boton8) {
             if (signoActual.equals("X")) {
@@ -265,7 +258,8 @@ public class GatoSwing extends JFrame implements ActionListener {
                 signoActual = "X";
             }
             boton8.setEnabled(false);
-            Ganador();
+            buttonsDisable += 1;
+            ganador();
         }
         if (e.getSource() == boton9) {
             if (signoActual.equals("X")) {
@@ -276,8 +270,10 @@ public class GatoSwing extends JFrame implements ActionListener {
                 signoActual = "X";
             }
             boton9.setEnabled(false);
-            Ganador();
+            buttonsDisable += 1;
+            ganador();
         }
+        */
         if (e.getSource() == nuevoJuego) {
             boton1.setText("");
             boton2.setText("");
@@ -300,8 +296,7 @@ public class GatoSwing extends JFrame implements ActionListener {
             boton9.setEnabled(true);
             nuevoJuego.setEnabled(false);
             signoActual = "X";
+            buttonsDisable = 0;
         }
-
     }
-
 }
